@@ -14,20 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FishList:
   - name: "\u30DE\u30B0\u30ED"
+    size: 0
     max_Size: 20
     min_Size: 15
     strength: 0
-    battle_Frequently: 0
-    move_Frequently: 0
+    battle_Frequently: 20
+    move_Frequently: 20
   - name: "\u30B5\u30B1"
+    size: 0
     max_Size: 10
     min_Size: 5
     strength: 0
-    battle_Frequently: 0
-    move_Frequently: 0
+    battle_Frequently: 20
+    move_Frequently: 20
   - name: "\u30A4\u30EF\u30B7"
+    size: 0
     max_Size: 5
     min_Size: 1
     strength: 0
-    battle_Frequently: 0
-    move_Frequently: 0
+    battle_Frequently: 20
+    move_Frequently: 20

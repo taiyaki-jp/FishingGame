@@ -98,10 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6edaa3b8bd9110498d27bf48d279e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objs: {fileID: 11400000, guid: cee1aa06a23491a44bc70332a795a4a3, type: 2}
+  _objs: {fileID: 11400000, guid: cee1aa06a23491a44bc70332a795a4a3, type: 2}
   thisStates:
     name: 
-    Size: 0
+    size: 0
     max_Size: 0
     min_Size: 0
     strength: 0

@@ -1,31 +1,31 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private GameObject nowHit;
+    [SerializeField] private BattleManager _battleManager;
+    private Fish _fish;
     void Update()
     {
-        this.transform.position=Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        this.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetMouseButtonUp(0))
-            if (nowHit != null)
+            if (_fish != null)
             {
-                Debug.Log($"{nowHit.GetComponent<Fish>().thisStates.name}Ç™íﬁÇÍÇΩ!");
+                _battleManager.BattleStart(_fish.thisStates);
+                Debug.Log($"{_fish.thisStates.name}„ÅåÈá£„Çå„Åü!");
             }
             else
             {
-                Debug.Log("âΩÇ‡Ç©Ç©Ç¡ÇƒÇ¢Ç»Ç¢Åc");
+                Debug.Log("‰Ωï„ÇÇ„Åã„Åã„Å£„Å¶„ÅÑ„Å™„ÅÑ‚Ä¶");
             }
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        nowHit=collision.gameObject;
-        //Debug.Log(nowHit.name);
+        _fish = collision.GetComponent<Fish>();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        nowHit = null;
-        //Debug.Log("ó£ÇÍÇΩ");
+        _fish = null;
     }
 }
