@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
             if (_fish != null)
             {
                 _battleManager.BattleStart(_fish.thisStates);
-                Debug.Log($"{_fish.thisStates.name}が釣れた!");
+                Debug.Log($"{_fish.thisStates.name}がかかった!");
             }
             else
             {

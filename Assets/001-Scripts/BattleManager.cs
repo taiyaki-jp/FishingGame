@@ -39,7 +39,8 @@ public class BattleManager : MonoBehaviour
 
         //バトル開始
         _battlePhase = 1;
-        BPSliderUpdate();
+        _ = BPSliderUpdate();
+        _ = GSSliderUpdate();
     }
 
     private async UniTaskVoid BPSliderUpdate()
@@ -79,17 +80,36 @@ public class BattleManager : MonoBehaviour
 
     private async UniTaskVoid GSSliderUpdate()
     {
-        if (_GSMoveInt < 0) _GSTarget = Random.Range(0, 6);//変動先設定
-        else _GSMoveInt -= Random.Range(0, 11);
-        
-        if (Mathf.Abs(_GSSliderValue-_GSTarget)<0.1f)
+        bool moveing = false;
+        while (_battlePhase == 1)
         {
-            if (_GSSliderValue < _GSTarget) _GSSliderValue += 0.1f;
-            else _GSSliderValue -= 0.1f;
 
-            _GSSlider.value = _GSSliderValue;//値を反映
+            _GSMoveInt -= Random.Range(0, 11);
+
+            if (_GSMoveInt <= 0)
+            {
+                moveing = true;
+                _GSTarget = Random.Range(0, 6);//変動先設定
+            }
+
+            while (moveing)
+            {
+                if (Mathf.Abs(_GSSliderValue - _GSTarget) >= 0.1f)
+                {
+                    if (_GSSliderValue < _GSTarget) _GSSliderValue += 0.05f;
+                    else _GSSliderValue -= 0.05f;
+
+                    _GSSlider.value = _GSSliderValue; //値を反映
+                }
+                else
+                {
+                    moveing = false;
+                    _GSMoveInt = _moveFrequently; //初期化
+                }
+                await UniTask.Yield();
+            }
+
+            await UniTask.Delay(1);
         }
-        else _GSMoveInt = _moveFrequently;//初期化
-        await UniTask.Yield();
     }
 }
