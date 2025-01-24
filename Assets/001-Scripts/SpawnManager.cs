@@ -4,7 +4,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _spawnPoints;
-    private List<GameObject> _usedPoint = new List<GameObject>();
+    private List<GameObject> _usedPoint = new();
     [SerializeField] private GameObject _fishPrefab;
 
     private void Start()

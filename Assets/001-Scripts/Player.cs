@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
             if (_fish != null)
             {
-                _battleManager.BattleStart(_fish.thisStates);
+                _ = _battleManager.BattleStart(_fish.thisStates);
                 Debug.Log($"{_fish.thisStates.name}がかかった!");
             }
             else
