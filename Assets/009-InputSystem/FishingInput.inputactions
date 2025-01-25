@@ -1,0 +1,76 @@
+{
+    "name": "FishingInput",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "25f94b84-74e1-4e0b-85b1-bdc72477add8",
+            "actions": [
+                {
+                    "name": "BP",
+                    "type": "PassThrough",
+                    "id": "e1e01fd0-dbcf-4814-a135-f1a963fcb219",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "GS",
+                    "type": "Button",
+                    "id": "654c0354-f7d7-4d24-82db-89d6538d8110",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c915be1e-b186-4a7f-a7d5-b35e5a01ccc0",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BP",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cfe1479d-8e6a-4373-900e-a33eb68d9c18",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BP",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88189195-655b-4c7e-ac02-ee5adc8a91e4",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GS",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "149cf0a0-fd8e-4b8a-b30e-7603f024a4e1",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GS",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
