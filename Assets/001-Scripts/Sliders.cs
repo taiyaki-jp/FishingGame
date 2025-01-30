@@ -9,7 +9,7 @@ public class Sliders : MonoBehaviour
     [SerializeField]private float _moveSpeed=0.01f;
     private float _sliderValue;//横位置
     public float SliderValue=>_sliderValue;
-    private int _moveInt;//BPの方(横位置)が変わる頻度
+    private float _movefloat;//位置が変わる頻度
     private int _moveFrequently;//初期値保持
     private int _phase = 0;//0=待ち　1=逃げ　2＝暴れ
 
@@ -28,7 +28,7 @@ public class Sliders : MonoBehaviour
     {
         _moveFrequently = fish.move_Frequently;
         _sliderValue = 0;
-        _moveInt = _moveFrequently;
+       _movefloat = _moveFrequently;
         _ = BPSliderUpdate();
     }
 
@@ -39,9 +39,9 @@ public class Sliders : MonoBehaviour
         while (_phase == 1)
         {
 
-            _moveInt -= Random.Range(0, 11);
+           _movefloat -= Random.Range(0, 11)*Time.deltaTime*50;
 
-            if (_moveInt <= 0)
+            if (_movefloat <= 0)
             {
                 moving = true;
                 target = Random.Range(_slider.minValue,_slider.maxValue); //移動先設定
@@ -51,20 +51,20 @@ public class Sliders : MonoBehaviour
             {
                 if (Mathf.Abs(_sliderValue - target) >= 0.05f)
                 {
-                    if (_sliderValue < target) _sliderValue += _moveSpeed;
-                    else _sliderValue -= _moveSpeed;
+                    if (_sliderValue < target) _sliderValue += _moveSpeed*Time.deltaTime*50;
+                    else _sliderValue -= _moveSpeed*Time.deltaTime*50;
 
                     _slider.value = _sliderValue; //値を反映
                 }
                 else
                 {
                     moving = false;
-                    _moveInt = _moveFrequently; //初期化
+                   _movefloat = _moveFrequently; //初期化
                 }
                 await UniTask.Yield();
             }
 
-            await UniTask.Delay(1);
+            await UniTask.Yield();
         }
     }
 }

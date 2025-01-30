@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,7 @@ public class BattleManager : MonoBehaviour
     private BPPlayerSlider _BPPlayerSlider;
 
     private int _distance=300;
-    private Text _distanceText;
+    [SerializeField]private TextMeshProUGUI _distanceText;
 
 
     private void Start()

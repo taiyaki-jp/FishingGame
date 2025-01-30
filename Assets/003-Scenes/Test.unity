@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 139206903}
   - component: {fileID: 139206902}
   m_Layer: 5
-  m_Name: Distance
+  m_Name: Distance Int
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -603,6 +603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _BPDistance: 0.3
   _GSDistance: 1
+  _distanceText: {fileID: 139206902}
 --- !u!1 &445847843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,7 +1120,7 @@ GameObject:
   - component: {fileID: 730313500}
   - component: {fileID: 730313499}
   m_Layer: 5
-  m_Name: Distance (1)
+  m_Name: Distance String
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
