@@ -1,13 +1,12 @@
 ﻿using Cysharp.Threading.Tasks;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
 {
     [SerializeField] private float _BPDistance;
     [SerializeField] private float _GSDistance;
+    [SerializeField] private TextMeshProUGUI _text;
 
     private Sliders[] _sliders=new Sliders[2];//BP,GSの順番
     private int _battlePhase = 0;//0=待ち　1=逃げ　2＝暴れ
@@ -28,6 +27,7 @@ public class BattleManager : MonoBehaviour
 
     public async UniTask BattleStart(FishStates fish)
     {
+        _text.text = "魚が掛かった!";
         //バトル開始
         _battlePhase = 1;
         _distance = 300;
@@ -48,8 +48,8 @@ public class BattleManager : MonoBehaviour
         _BPPlayerSlider.SetPhase(_battlePhase);
         _GSPlayerSlider.SetPhase(_battlePhase);
 
-        if (_battlePhase == 0) Debug.Log("逃げられた……");
-        if (_battlePhase == 2) Debug.Log($"{fish.name}を釣り上げた!");
+        if (_battlePhase == 0) _text.text="逃げられた……";
+        if (_battlePhase == 2) _text.text=$"{fish.name}を釣り上げた!";
     }
 
     private async UniTask PhaseOne()

@@ -27,8 +27,8 @@ public class Sliders : MonoBehaviour
     private void BattleStart(FishStates fish)
     {
         _moveFrequently = fish.move_Frequently;
-        _sliderValue = 0;
-       _movefloat = _moveFrequently;
+        _sliderValue = Mathf.Max(_slider.minValue,0);
+        _movefloat = _moveFrequently;
         _ = BPSliderUpdate();
     }
 
