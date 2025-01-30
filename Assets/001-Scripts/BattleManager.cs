@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -39,25 +40,46 @@ public class BattleManager : MonoBehaviour
         _GSPlayerSlider.SetPhase(_battlePhase);
 
         await PhaseOne();
+
+        foreach (var slider in _sliders)
+        {
+            slider.SetPhase(fish, _battlePhase);
+        }
+        _BPPlayerSlider.SetPhase(_battlePhase);
+        _GSPlayerSlider.SetPhase(_battlePhase);
+
+        if (_battlePhase == 0) Debug.Log("逃げられた……");
+        if (_battlePhase == 2) Debug.Log($"{fish.name}を釣り上げた!");
     }
 
     private async UniTask PhaseOne()
     {
-        var BPEnemy = _sliders[0].SliderValue;
-        var BPPlayer = _BPPlayerSlider.SliderValue;
-        var BPDistance=Mathf.Abs(BPEnemy-BPPlayer);
-
-        var GSEnemy= _sliders[1].SliderValue;
-        var GSPlayer = _GSPlayerSlider.SliderValue;
-        var GSDistance=Mathf.Abs(GSEnemy-GSPlayer);
-
-        if (BPDistance < _BPDistance && GSDistance < _GSDistance)
+        while (_battlePhase == 1)
         {
-            _distance--;
-            _distance=Mathf.Max(_distance,0);
-            _distanceText.text = _distance.ToString();
-        }
+            var BPEnemy = _sliders[0].SliderValue;
+            var BPPlayer = _BPPlayerSlider.SliderValue;
+            var BPDistance = Mathf.Abs(BPEnemy - BPPlayer);
 
-        await UniTask.Yield();
+            var GSEnemy = _sliders[1].SliderValue;
+            var GSPlayer = _GSPlayerSlider.SliderValue;
+            var GSDistance = Mathf.Abs(GSEnemy - GSPlayer);
+
+            if (BPDistance < _BPDistance && GSDistance < _GSDistance)
+            {
+                _distance--;
+                _distance = Mathf.Max(_distance, 0);
+                if (_distance == 0) _battlePhase = 2;
+            }
+            else
+            {
+                _distance++;
+                if(_distance>500)_battlePhase = 0;
+            }
+            _distanceText.text = _distance.ToString();
+            
+
+            await UniTask.Delay(20);
+            
+        }
     }
 }
