@@ -21,13 +21,14 @@ public class Sliders : MonoBehaviour
     public void SetPhase(FishStates fish,int phase)
     {
         _phase = phase;
+        _sliderValue = Mathf.Max(_slider.minValue,0);
+        _slider.value = _sliderValue;
         if (_phase == 1) BattleStart(fish);
     }
 
     private void BattleStart(FishStates fish)
     {
         _moveFrequently = fish.move_Frequently;
-        _sliderValue = Mathf.Max(_slider.minValue,0);
         _movefloat = _moveFrequently;
         _ = BPSliderUpdate();
     }

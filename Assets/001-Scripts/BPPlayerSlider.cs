@@ -23,19 +23,19 @@ public class BPPlayerSlider : MonoBehaviour
     public void SetPhase(int phase)
     {
         _phase = phase;
+        _slider.value = 0;
         if (_phase == 1) BattleStart();
     }
 
     private void BattleStart()
     {
-        _slider.value = 0;
         _ = BPPlayerSliderUpdate();
     }
 
 
     private async UniTask BPPlayerSliderUpdate()
     {
-        float value=0;
+        var value=0.0f;
         while (_phase==1)
         {
             if (Mathf.Abs(_inputValue.y)<=1&&_inputValue.x!=0) value=_inputValue.x;//コントローラー用 x != 0 コントローラーのときはx=0がありえない
