@@ -9,7 +9,7 @@ public class quizManager : MonoBehaviour
     private scoreManager _scoreManager;
     private string _quizAnswer;
     private int _missCount;
-    private CancellationTokenSource _tokenSource = new CancellationTokenSource();
+    private CancellationTokenSource _tokenSource = new();
     private CancellationToken _token;
 
     private void Start()
